@@ -1,3 +1,5 @@
+package PalindromeNumber;
+
 class PalindromeNumber {
     boolean isPalindrome(int x) {
         if (x == Integer.MIN_VALUE || x < 0) {

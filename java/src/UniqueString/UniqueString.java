@@ -8,11 +8,11 @@ class UniqueString {
     boolean isUnique(String s) {
         int bitMap = 0;
         for(int i = 0; i < s.length(); i++) {
-            if((bitMap & (1 << (s.charAt(i) - 'a'))) > 0) {
+            if((bitMap & (1 << (s.charAt(i)))) > 0) {
                 return false;
             }
 
-            bitMap |= 1 << (s.charAt(i) - 'a');
+            bitMap |= 1 << (s.charAt(i));
         }
 
         return true;

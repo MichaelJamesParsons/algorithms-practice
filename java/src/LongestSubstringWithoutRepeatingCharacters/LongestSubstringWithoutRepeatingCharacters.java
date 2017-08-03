@@ -1,3 +1,5 @@
+package LongestSubstringWithoutRepeatingCharacters;
+
 import java.util.HashSet;
 
 class LongestSubstringWithoutRepeatingCharacters {
