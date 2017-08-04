@@ -21,4 +21,9 @@ class HammingDistanceTests {
     void example2 () {
         Assertions.assertEquals(2, this.distance.hammingDistance(6,4));
     }
+
+    @Test
+    void example3 () {
+        Assertions.assertEquals(2, this.distance.hammingDistance(31,13));
+    }
 }

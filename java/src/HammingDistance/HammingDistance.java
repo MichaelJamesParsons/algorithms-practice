@@ -2,6 +2,14 @@ package HammingDistance;
 
 class HammingDistance {
     int hammingDistance(int x, int y) {
-        return (int)Math.floor(Math.log(x^y) / Math.log(2)) + (((x^y) % 2 > 0) ? 0 : 1);
+        int diff = x ^ y;
+        int distance = 0;
+
+        while (diff > 0) {
+            distance++;
+            diff &= diff - 1;
+        }
+
+        return distance;
     }
 }
