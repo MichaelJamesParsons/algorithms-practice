@@ -43,15 +43,3 @@ func TestNegativeMinInt(t *testing.T) {
 		t.Error("-2147483648 is not a palindrome. Expected false, got true.")
 	}
 }
-/*
-@Test
-    @Test
-    void testNegativeNonPalindrome() {
-        Assertions.assertEquals(false, this.palindromeNumber.isPalindrome(-2147483648));
-    }
-
-    @Test
-    void testNegativePalindrome() {
-        Assertions.assertEquals(false, this.palindromeNumber.isPalindrome(-12321));
-    }
- */
