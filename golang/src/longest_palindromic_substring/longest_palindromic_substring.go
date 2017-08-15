@@ -8,7 +8,7 @@ func longestPalindrome(s string) string {
 	}
 
 	for pos := 0; pos < len(s) - 1; pos++ {
-		
+
 		// Even length palindromic substrings
 		even := expand(s, pos, pos)
 		// Odd length palindromic substrings
