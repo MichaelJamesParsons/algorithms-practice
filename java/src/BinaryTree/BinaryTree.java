@@ -102,4 +102,20 @@ class BinaryTree {
         list.add(root.val);
         inorderTraversal(root.right, list);
     }
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        return postorderTraversal(root, new ArrayList<Integer>());
+    }
+
+    public List<Integer> postorderTraversal(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return list;
+        }
+
+        postorderTraversal(root.left, list);
+        postorderTraversal(root.right, list);
+        list.add(root.val);
+
+        return list;
+    }
 }
