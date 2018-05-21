@@ -1,5 +1,6 @@
 package BinaryTree;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -115,6 +116,48 @@ class BinaryTree {
         postorderTraversal(root.left, list);
         postorderTraversal(root.right, list);
         list.add(root.val);
+
+        return list;
+    }
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        ArrayDeque<TreeNode> q = new ArrayDeque<>();
+        List<List<Integer>> list = new ArrayList<List<Integer>>();
+
+        if (root == null) {
+            return list;
+        }
+
+        List<Integer> initialList = new ArrayList<Integer>();
+        initialList.add(root.val);
+        list.add(initialList);
+        q.add(root);
+
+        while(!q.isEmpty()) {
+            List<Integer> nList = new ArrayList<Integer>();
+            ArrayDeque<TreeNode> q2 = new ArrayDeque<>();
+
+            // Iterate over the nodes in a row
+            while(!q.isEmpty()) {
+                TreeNode n = q.pop();
+
+                if (n.left != null) {
+                    q2.add(n.left);
+                    nList.add(n.left.val);
+                }
+
+                if (n.right != null) {
+                    q2.add(n.right);
+                    nList.add(n.right.val);
+                }
+            }
+
+            if (!nList.isEmpty()) {
+                list.add(nList);
+            }
+
+            q = q2;
+        }
 
         return list;
     }
