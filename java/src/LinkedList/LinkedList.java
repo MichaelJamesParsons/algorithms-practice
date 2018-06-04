@@ -1,5 +1,8 @@
 package LinkedList;
 
+import javax.xml.soap.Node;
+import java.util.HashMap;
+
 class ListNode {
     public int val;
     public ListNode next;
@@ -126,5 +129,42 @@ public class LinkedList {
         }
 
         return false;
+    }
+
+    public ListNode detectCycle(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        // Both slow and fast must start at head. If fast were to begin at head.next,
+        // they would never meet if the cycle were of length 2.
+        ListNode slow = head;
+        ListNode fast = head;
+        boolean isCycle = false;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                isCycle = true;
+                break;
+            }
+        }
+
+        // No cycle found
+        if (!isCycle) {
+            return null;
+        }
+
+        // The distance between the point where fast/slow meet and the start of the cycle
+        // is the same as the distance between head and the start of the cycle.
+        slow = head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow;
     }
 }
