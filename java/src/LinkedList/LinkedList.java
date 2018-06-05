@@ -215,4 +215,28 @@ public class LinkedList {
 
         return null;
     }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        int x = 0;
+        while (x < n) {
+            fast = fast.next;
+            x++;
+        }
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        slow.next = slow.next.next;
+
+        return head;
+    }
 }
