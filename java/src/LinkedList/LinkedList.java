@@ -167,4 +167,52 @@ public class LinkedList {
 
         return slow;
     }
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        int lengthA = 0;
+        int lengthB = 0;
+
+        if (headA == null || headB == null) {
+            return null;
+        }
+
+        ListNode a = headA;
+        ListNode b = headB;
+
+        while (a != null) {
+            a = a.next;
+            lengthA++;
+        }
+
+        while (b != null) {
+            b = b.next;
+            lengthB++;
+        }
+
+        int x = 0;
+        a = headA;
+        b = headB;
+        if (lengthA > lengthB) {
+            while (x < lengthA - lengthB) {
+                a = a.next;
+                x++;
+            }
+        } else if (lengthB > lengthA) {
+            while (x < lengthB - lengthA) {
+                b = b.next;
+                x++;
+            }
+        }
+
+        while (a != null && b != null) {
+            if (a == b) {
+                return a;
+            }
+
+            a = a.next;
+            b = b.next;
+        }
+
+        return null;
+    }
 }
