@@ -53,3 +53,40 @@ var removeElements = function(head, val) {
 
     return head;
 };
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var oddEvenList = function(head) {
+    if (head === null || head.next === null) {
+        return head;
+    }
+
+    var oddPointer = head;
+    var evenHead = head.next;
+    var evenPointer = evenHead;
+    var pointer = evenHead;
+    var isOdd = true;
+
+    while (pointer.next !== null) {
+        pointer = pointer.next;
+
+        if (isOdd) {
+            oddPointer.next = pointer;
+            oddPointer = oddPointer.next;
+        } else {
+            evenPointer.next = pointer;
+            evenPointer = evenPointer.next;
+        }
+
+        isOdd = !isOdd;
+    }
+
+    if (evenPointer !== null) {
+        evenPointer.next = null;
+    }
+
+    oddPointer.next = evenHead;
+    return head;
+};
