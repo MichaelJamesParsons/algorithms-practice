@@ -90,3 +90,49 @@ var oddEvenList = function(head) {
     oddPointer.next = evenHead;
     return head;
 };
+
+var isPalindrome = function(head) {
+    var listLength = 0;
+    var pointer = head;
+
+    if (head === null || head.next === null) {
+        return true;
+    }
+
+    while (pointer != null) {
+        pointer = pointer.next;
+        listLength++;
+    }
+
+    var x = 0;
+    var current;
+    var leadPointer = head;
+    while (x < Math.floor(listLength / 2)) {
+        // Since the current node is behind the halfway point,
+        // set it as the head of the list, effectively reversing
+        // the order of the first half of the list.
+        current = leadPointer;
+
+        // Move the halfway pointer forward
+        leadPointer = leadPointer.next;
+
+        current.next = head;
+        head = current;
+        x++;
+    }
+
+    if (listLength % 2 !== 0) {
+        leadPointer = leadPointer.next;
+    }
+
+    while (leadPointer !== null) {
+        if (leadPointer.val !== head.val) {
+            return false;
+        }
+
+        leadPointer = leadPointer.next;
+        head = head.next;
+    }
+
+    return true;
+};
