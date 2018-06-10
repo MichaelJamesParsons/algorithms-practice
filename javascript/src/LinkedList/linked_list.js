@@ -2,14 +2,15 @@
  * Initialize your data structure here.
  */
 var MyLinkedList = function() {
-    var head = null;
+    this.head = null;
 };
 
 MyLinkedList.prototype.getNode = function (index) {
     var x = 0;
     var pointer = this.head;
-    while (this.head !== null && x < index) {
+    while (pointer !== null && x < index) {
         pointer = pointer.next;
+        x++;
     }
 
     return pointer;
@@ -65,6 +66,7 @@ MyLinkedList.prototype.addAtTail = function(val) {
     }
 
     pointer.next = node;
+    node.prev = pointer;
 };
 
 /**
@@ -80,7 +82,20 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
         return;
     }
 
-    var node = this.get(index - 1);
+    var current = this.getNode(index - 1);
+
+    if (current === null) {
+        return;
+    }
+
+    var next = current.next;
+    current.next = node;
+    node.prev = current;
+
+    if (next !== null) {
+        node.next = next;
+        next.prev = node;
+    }
 };
 
 /**
@@ -89,7 +104,28 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
  * @return {void}
  */
 MyLinkedList.prototype.deleteAtIndex = function(index) {
+    if (this.head === null) {
+        return;
+    } else if (index === 0) {
+        this.head = this.head.next;
 
+        if (this.head !== null) {
+            this.head.prev = null;
+        }
+
+        return;
+    }
+
+    var prev = this.getNode(index - 1);
+    var nodeToRemove = prev.next;
+
+    if (nodeToRemove !== null) {
+        prev.next = nodeToRemove.next;
+
+        if (nodeToRemove.next !== null) {
+            nodeToRemove.next.prev = prev
+        }
+    }
 };
 
 /**
