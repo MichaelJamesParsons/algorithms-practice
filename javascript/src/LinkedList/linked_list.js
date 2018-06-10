@@ -77,6 +77,7 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
     var node = new ListNode(val);
     if (index === 0) {
         this.addAtHead(val);
+        return;
     }
 
     var node = this.get(index - 1);
