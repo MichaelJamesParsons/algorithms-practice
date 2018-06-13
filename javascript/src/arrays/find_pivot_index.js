@@ -20,7 +20,7 @@ var pivotIndex = function(nums) {
 
         while (rightSum <= leftSum && right > left) {
             rightSum += nums[right];
-            right++;
+            right--;
         }
     }
 
