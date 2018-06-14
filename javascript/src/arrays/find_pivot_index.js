@@ -3,31 +3,18 @@
  * @return {number}
  */
 var pivotIndex = function (nums) {
-    if (nums.length === 0) {
-        return -1;
+    var sum = 0;
+    for (var x = 0; x < nums.length; x++) {
+        sum += nums[x];
     }
 
-    var pivotIndex = 0;
-    var left, right, leftSum, rightSum;
-    while (pivotIndex < nums.length) {
-        left = right = pivotIndex;
-        leftSum = rightSum = 0;
-
-        while (left > 0) {
-            left--;
-            leftSum += nums[left];
+    var leftSum = 0;
+    for (var x = 0; x < nums.length; x++) {
+        if (leftSum === (sum - leftSum - nums[x])) {
+            return x;
         }
 
-        while (right < nums.length - 1) {
-            right++;
-            rightSum += nums[right];
-        }
-
-        if (leftSum === rightSum) {
-            return pivotIndex;
-        }
-
-        pivotIndex++;
+        leftSum += nums[x];
     }
 
     return -1;
