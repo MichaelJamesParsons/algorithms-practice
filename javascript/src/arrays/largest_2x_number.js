@@ -21,10 +21,12 @@ var dominantIndex = function(nums) {
         if (nums[x] > nums[largestNumIndex]) {
             secondLargestIndex = largestNumIndex;
             largestNumIndex = x;
+        } else if (secondLargestIndex === null || nums[x] > nums[secondLargestIndex]) {
+            secondLargestIndex = x
         }
     }
 
-    if (nums[secondLargestIndex] !== 0 && nums[largestNumIndex] > 2 * nums[secondLargestIndex]) {
+    if (nums[largestNumIndex] >= 2 * nums[secondLargestIndex]) {
         return largestNumIndex;
     }
 
