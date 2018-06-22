@@ -7,7 +7,7 @@ var findDiagonalOrder = function(matrix) {
     return [];
   }
 
-  var vec = [];
+  var result = [];
   var r = matrix.length;
   var c = matrix[0].length;
   var i, j, count, index;
@@ -22,9 +22,9 @@ var findDiagonalOrder = function(matrix) {
     }
 
     count = Math.min(i, c - j - 1) + 1;
-    index = (d % 2 === 0) ? vec.length : vec.length + count - 1;
+    index = (d % 2 === 0) ? result.length : result.length + count - 1;
     while (count > 0) {
-      vec[index] = matrix[i][j];
+      result[index] = matrix[i][j];
 
       i--;
       j++;
@@ -39,5 +39,5 @@ var findDiagonalOrder = function(matrix) {
     }
   }
 
-  return vec;
+  return result;
 };
