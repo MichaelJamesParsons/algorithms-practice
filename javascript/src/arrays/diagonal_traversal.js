@@ -21,18 +21,17 @@ var findDiagonalOrder = function(matrix) {
       j = d - r + 1;
     }
 
-    count = r - (c - j) + 1;
+    count = Math.min(i, c - j - 1) + 1;
     index = (d % 2 === 0) ? vec.length : vec.length + count - 1;
     while (count > 0) {
       vec[index] = matrix[i][j];
 
+      i--;
+      j++;
+
       if (d % 2 === 0) {
-        i--;
-        j++;
         index++;
       } else {
-        i++;
-        j--;
         index--;
       }
 
