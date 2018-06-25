@@ -15,7 +15,7 @@ var arrayPairSum = function(nums) {
     return a - b;
   });
 
-  for (var x = 0; x <= nums.length - 1; x += 2) {
+  for (var x = 0; x < nums.length; x += 2) {
     sum += nums[x];
   }
 
