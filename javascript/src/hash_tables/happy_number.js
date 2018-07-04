@@ -5,7 +5,7 @@
 var isHappy = function(n) {
   var tmp;
 
-  while (n !== 1 && n !== Infinity) {
+  while (n !== 1) {
     tmp = 0;
     while (n > 0) {
       var digit = Math.pow(n % 10, 2);
@@ -20,5 +20,5 @@ var isHappy = function(n) {
     n = tmp;
   }
 
-  return n === 1;
+  return true;
 };
