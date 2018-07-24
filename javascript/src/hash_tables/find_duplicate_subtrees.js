@@ -13,13 +13,13 @@ var findDuplicateSubtrees = function(root) {
   var subtreeMap = {};
   findSubtrees(root, subtreeMap);
 
-  return Object.keys(subtreeMap).reduce((duplicates, key) => {
+  return Object.keys(subtreeMap).reduce(function (duplicates, key) {
     if (subtreeMap[key].count > 1) {
-    duplicates.push(subtreeMap[key].head);
-  }
+      duplicates.push(subtreeMap[key].head);
+    }
 
-  return duplicates;
-}, []);
+    return duplicates;
+  }, []);
 };
 
 function findSubtrees (node, map) {
