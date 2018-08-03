@@ -1,5 +1,5 @@
 /**
- * Num squares solution using knapsack algorithm.
+ * Num squares solution.
  *
  * @param {number} n
  * @return {number}
