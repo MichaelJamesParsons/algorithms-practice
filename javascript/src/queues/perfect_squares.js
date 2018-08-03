@@ -8,7 +8,7 @@ var numSquares = function(n) {
   var result = [];
   for (var i = 0; i <= n; i++) {
     result[i] = i;
-    for (var j = 1; j * j < i; j++) {
+    for (var j = 1; j * j <= i; j++) {
       result[i] = Math.min(result[i], result[i - j * j] + 1);
     }
   }
