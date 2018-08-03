@@ -1,8 +1,29 @@
 /**
+ * Num squares solution using knapsack algorithm.
+ *
  * @param {number} n
  * @return {number}
  */
 var numSquares = function(n) {
+  var result = [];
+  for (var i = 0; i <= n; i++) {
+    result[i] = i;
+    for (var j = 1; j * j < i; j++) {
+      result[i] = Math.min(result[i], result[i - j * j] + 1);
+    }
+  }
+
+  return result[n];
+};
+
+
+/**
+ * Num squares solution using knapsack algorithm.
+ *
+ * @param {number} n
+ * @return {number}
+ */
+var numSquaresKnapsack = function(n) {
   var squares = [];
   var x = 1;
   while (x * x <= n) {
