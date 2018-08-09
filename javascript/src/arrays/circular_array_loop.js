@@ -15,6 +15,7 @@ var circularArrayLoop = function(nums) {
   var dir;
 
   for (var x = 0; x < nums.length; x++) {
+    dir = nums[x]
     slow = x;
     fast = getNextIndex(getNextIndex(x, dir, nums), dir, nums);
 
