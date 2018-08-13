@@ -39,3 +39,37 @@ var trap = function(heights) {
 
   return sum;
 };
+
+
+/**
+ * Alternative solution inspired by other users' submissions.
+ *
+ * @param {number[]} heights
+ * @return {number}
+ */
+var trap2 = function(heights) {
+  if (heights.length <= 1) {
+    return 0;
+  }
+
+  var left = 0;
+  var right = heights.length - 1;
+  var minHeight = 0;
+  var total = 0;
+
+  while (left < right) {
+    while (left < right && heights[left] <= minHeight) {
+      total += minHeight - heights[left];
+      left++;
+    }
+
+    while (left < right && heights[right] <= minHeight) {
+      total += minHeight - heights[right];
+      right--;
+    }
+
+    minHeight = Math.min(heights[left], heights[right]);
+  }
+
+  return total;
+};
