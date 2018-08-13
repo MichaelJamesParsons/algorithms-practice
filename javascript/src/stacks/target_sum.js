@@ -10,7 +10,7 @@ var findTargetSumWays = function(nums, S) {
 
 var traverse = function (nums, S, index, map) {
   if (index === 0) {
-    return { key: nums[index] + '', target: 0, total: nums[index] };
+    return { key: nums[index] + '', total: nums[index] };
   }
 
   var positive = traverse(nums, S, index - 1, map);
@@ -19,7 +19,7 @@ var traverse = function (nums, S, index, map) {
 
   var negative = traverse(nums, S, index - 1, map);
   negative.key += '-' + nums[index];
-  negative.key += 1 * nums[index];
+  negative.total += -1 * nums[index];
 
   return positive.total + negative.total;
 }
