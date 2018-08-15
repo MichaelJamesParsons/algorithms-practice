@@ -5,7 +5,6 @@
 var validWordSquare = function(words) {
   for (var x = 0; x < words.length; x++) {
     var y = 0;
-    var wordLen = words[x].length;
 
     while (y < x + 1) {
       // row is longer than column OR
