@@ -5,6 +5,8 @@
  * every other number in the array.
  *
  * If it is, return the index of the largest element, otherwise return -1.
+ *
+ * @see <a href="https://leetcode.com/problems/largest-number-at-least-twice-of-others/">LeetCode</a>
  */
 class Solution {
   public int dominantIndex(int[] nums) {
