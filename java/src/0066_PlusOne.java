@@ -7,6 +7,8 @@
  *
  * You may assume the integer does not contain any leading zero, except the
  * number 0 itself.
+ *
+ * @see <a href="https://leetcode.com/problems/plus-one/">LeetCode</a>
  */
 class Solution {
   public int[] plusOne(int[] digits) {
